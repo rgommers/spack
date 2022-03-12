@@ -489,8 +489,8 @@ class ViewDescriptor(object):
                 # installed.
                 spec_copy._hash = spec._hash
 
-                spec_hash_val = getattr(spec, ht.runtime_hash.attr,
-                                        getattr(spec, ht.dag_hash.attr, None))
+                spec_hash_val = (getattr(spec, ht.runtime_hash.attr, None) or
+                                 getattr(spec, ht.dag_hash.attr, None))
                 setattr(spec_copy, ht.runtime_hash.attr, spec_hash_val)
 
                 spec_copy._normal = spec._normal
